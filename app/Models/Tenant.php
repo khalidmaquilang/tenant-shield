@@ -24,6 +24,11 @@ class Tenant extends Model implements HasCurrentTenantLabel
         return $this->belongsToMany(User::class);
     }
 
+    public function invites(): HasMany
+    {
+        return $this->hasMany(Invite::class);
+    }
+
     public function roles(): HasMany
     {
         return $this->hasMany(Role::class);
