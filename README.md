@@ -1,5 +1,5 @@
 ## Multi-tenant with Shield Plugin
-This filamentphp app is combined with multi-tenant and [shield](https://filamentphp.com/plugins/bezhansalleh-shield)
+This filamentphp app is combined with multi-tenant and [shield](https://filamentphp.com/plugins/bezhansalleh-shield). Each Tenant has its own roles.
 
 ## Requirements
 
