@@ -37,7 +37,6 @@ DB_PASSWORD=password
 - Run ``php artisan migrate:refresh``
 - Run ``php artisan shield:generate --all``
 - Run ``php artisan serve``
-- Run ``npm run dev`` (another window)
 - Open ``localhost`` on your browser
 
 ## Setup on local using sail
@@ -76,7 +75,6 @@ docker run --rm \
 - Run ``./vendor/bin/sail artisan key:generate``
 - Run ``./vendor/bin/sail artisan migrate:refresh``
 - Run ``./vendor/bin/sail artisan shield:generate --all``
-- Run ``./vendor/bin/sail npm run dev``
 - Open ``localhost`` on your browser
 
 # How to use
