@@ -83,3 +83,12 @@ public function posts(): HasMany {
 - Create an observer class extend it with `BaseObserver`
 - Add the newly created `Observer` in the `boot` of `AppServiceProvider`. Check laravel document for more info.
 - You can run `shield:generate --all` to generate policies and permissions
+
+# Screenshot
+
+<img width="1490" alt="Screenshot 2024-07-29 at 5 32 22 AM" src="https://github.com/user-attachments/assets/5c830ffd-38ab-4be7-a7b5-d3b1b2bc9167">
+<img width="1463" alt="Screenshot 2024-07-29 at 5 32 34 AM" src="https://github.com/user-attachments/assets/489490fd-606b-49d0-b116-10a0164a07a4">
+<img width="1151" alt="Screenshot 2024-07-29 at 5 32 50 AM" src="https://github.com/user-attachments/assets/a34a8f07-35e2-48d0-8672-4edacdf253ab">
+<img width="1471" alt="Screenshot 2024-07-29 at 5 35 32 AM" src="https://github.com/user-attachments/assets/1958633d-a860-41ac-b034-af0e528224b8">
+<img width="1474" alt="Screenshot 2024-07-29 at 5 35 40 AM" src="https://github.com/user-attachments/assets/9c26a9cd-2071-4806-b171-a7ecc381f220">
+<img width="1486" alt="Screenshot 2024-07-29 at 5 36 23 AM" src="https://github.com/user-attachments/assets/c61b5f53-2527-4b3f-ba7f-ff04d021af03">
