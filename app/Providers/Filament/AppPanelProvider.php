@@ -2,6 +2,10 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Pages\Tenancy\EditTenantProfile;
+use App\Filament\Pages\Tenancy\RegisterTenant;
+use App\Http\Middlewares\TenantPermission;
+use App\Models\Tenant;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -27,6 +31,7 @@ class AppPanelProvider extends PanelProvider
             ->id('app')
             ->path('app')
             ->login()
+            ->registration()
             ->colors([
                 'primary' => Color::Amber,
             ])
@@ -56,6 +61,12 @@ class AppPanelProvider extends PanelProvider
             ])
             ->plugins([
                 \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make(),
-            ]);
+            ])
+            ->tenant(Tenant::class, slugAttribute: 'slug')
+            ->tenantRegistration(RegisterTenant::class)
+            ->tenantProfile(EditTenantProfile::class)
+            ->tenantMiddleware([
+                TenantPermission::class,
+            ], isPersistent: true);
     }
 }

@@ -4,12 +4,18 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use BezhanSalleh\FilamentShield\Traits\HasPanelShield;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Models\Contracts\HasTenants;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Collection;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser, HasTenants
 {
     use HasFactory, HasPanelShield, HasRoles, Notifiable;
 
@@ -45,5 +51,30 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function tenants(): BelongsToMany
+    {
+        return $this->belongsToMany(Tenant::class);
+    }
+
+    public function tenant()
+    {
+        return $this->tenants()->where('tenant_id', filament()->getTenant()->id);
+    }
+
+    public function getTenants(Panel $panel): Collection
+    {
+        return $this->tenants;
+    }
+
+    public function canAccessTenant(Model $tenant): bool
+    {
+        return $this->tenants()->whereKey($tenant)->exists();
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return true;
     }
 }
